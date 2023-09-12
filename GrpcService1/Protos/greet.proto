@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService1";
+
+package greet;
+
+// The service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (DonneMoiRequest) returns (TiensJeTeDonneReply);
+  rpc ServerStreaming (Test) returns (stream Test);
+  rpc ClientStreaming(stream Test) returns (Test);
+  rpc BidirectionalStreaming(stream Test) returns (stream Test);
+}
+
+// The request message containing the user's name.
+message DonneMoiRequest {
+  string name = 1;
+  int32 age = 2;
+  string sex = 3;
+}
+
+// The response message containing the greetings.
+message TiensJeTeDonneReply {
+  string message = 1;
+}
+
+
+message Test
+{
+	string TestMessage = 1;
+}
